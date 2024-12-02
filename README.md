@@ -20,15 +20,15 @@ Please, write down any assumptions you made.
 
 For the following problem Assumptions which I made were
 
-Every Task Group should be exectued independently 
-All task submmited in that group should be executed in sequential order for example if we are executing a task from taskgroup A then we should not execute a task from same task group.
+Every Task Group should be executed independently 
+All task submitted in that group should be executed in sequential order for example if we are executing a task from task group A then we should not execute a task from same task group.
 No Task Group from the same task should be run concurrently
 
-to Achieve this I used mutex by having two seamphore one at group level and other at concurrency level.
+to Achieve this I used mutex by having two semaphore one at group level and other at concurrency level.
 The group semaphore ensures no two tasks from the same group run concurrently.
 The global level semaphore is used to limit overall concurrency limit
 
-So now for Task submmision I went with the executor service instead of using a blocking queue with manual synchronization. The ExecutorService  encapsulates and  handles the complexities of  task submission and execution order internally which
+So now for Task submission I went with the executor service instead of using a blocking queue with manual synchronization. The ExecutorService  encapsulates and  handles the complexities of  task submission and execution order internally which
 swe had to handle manually  making the code more concise, readable, and maintainable.
 This approach eliminates the need for explicit task queue management and synchronized blocks, reducing the risk of concurrency bugs like deadlock and simplifying the implementation.
 
