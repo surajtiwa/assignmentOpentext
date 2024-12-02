@@ -16,3 +16,11 @@ Additional implementation requirements:
 2. No third-party libraries can be used.
 3. The provided interfaces and classes must not be modified.
 Please, write down any assumptions you made.
+
+
+For the following problem Assumptions which i made were
+Every Task Group should be exectued independently and all task submmited in that group should be executed in sequential order for example if we are executing a task from taskgroup A then we should not execute a task from same task group.
+to Achieve this I used mutex by having two seamphore one at group level and other at concurrency level.
+The group semaphore ensures no two tasks from the same group run concurrently.
+
+So now for Task submmision I went with the executor service instead of using a blocking queue and synchronized block. The main reason for me using executor service as it encapsulates  all the task submission and execution order which we had to handle manually while going with Blocking queue and code is more readable with executor service.
